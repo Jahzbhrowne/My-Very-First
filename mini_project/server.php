@@ -14,7 +14,7 @@ $evdetails="evdetails";
 
 error_reporting(E_ALL |E_STRICT);
 // connecting the database to server but this will be the single instance of the connection to the database
-$con = mysqli_connect('localhost', 'root', '','eventdb' );
+$con = mysqli_connect($host, $username, $password,$db );
  // Check connection
     if ($con->connect_error) {
         die("Connection failed: " . $con->connect_error);

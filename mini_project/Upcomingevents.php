@@ -94,9 +94,9 @@
             <a class="btn btn-primary btn-xl" href="Upcomingevents.php" style="font-size:28px">View All Events</a>
           </div>-->
 <?php
-
+include 'server.php';
 // connect to the database
-$con = mysqli_connect('localhost', 'root', '','eventdb' );
+// $con = mysqli_connect('localhost', 'root', '','eventdb' );
  // Check connection
     if ($con->connect_error) {
         die("Connection failed: " . $con->connect_error);

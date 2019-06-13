@@ -1,0 +1,4 @@
+1. Search query using the using option buttons
+2. Adding the comments to the picture
+3. Modifying the database 
+4. Handing the User search for event.

@@ -63,13 +63,8 @@
                        echo "<img src=$images[$count]><br><br><br>"; 
                      }      
                     ?>  
-            <script type="text/javascript"> 
-                function jvfunction(clicked){
-                    var x = "<?php displImage(); ?>"
-                    alert(x);
-                    return false;
-                }
-            </script>
+            
+           
                 <li> <select class="dropdown">
               <option onclick="jvfunction" >Academia</option>
                   <option>Religious</option>

@@ -66,7 +66,7 @@
             
            
                 <li> <select class="dropdown">
-              <option onclick="jvfunction" >Academia</option>
+              <option >Academia</option>
                   <option>Religious</option>
                   <option>SRC</option>
                   <option>Social</option>

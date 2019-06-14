@@ -8,7 +8,7 @@
 
 <link href="bootstrap1/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom font for this template -->
+  <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 
@@ -100,9 +100,9 @@
          <input type="radio" name="campus" value="LEGON">LEGON<br>
          <input type="radio" name="campus" value="UCC">UCC<br>
          <input type="radio" name="campus" value="UDS">UDS<br>
-        
-        <p style="font-size:25px">Tell us about your company</p>
-        <textarea style="border-radius: .85em;padding:0.5em" name="c_info"></textarea><br> <br>
+         <br><br>
+        <!--<p style="font-size:25px">Tell us about your company</p>
+        <textarea style="border-radius: .85em;padding:0.5em" name="c_info"></textarea><br> <br> -->
         <p><input type="submit" placeholder="Submit" style="background-color:chocolate; border-radius: .85em;font-size:1.4em;border-style: double;border-color: brown" name="evupload" value="Upload Event"></p>
         </form>
             </div>

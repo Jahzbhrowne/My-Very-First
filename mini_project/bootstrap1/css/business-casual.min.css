@@ -261,6 +261,7 @@ p {
 div.image {
     margin: 10px;
     display: inline-block;
+    
    
 }
 
@@ -280,8 +281,10 @@ div.image img:hover {
     color: #FFF;
     background:#e6a756;
    /* background: #6aadf1;*/
+    margin-top: 0px;
     margin-bottom:10px;
     font-size: 2.5em;
+    
 }
 #grid{
     margin-bottom:30px;

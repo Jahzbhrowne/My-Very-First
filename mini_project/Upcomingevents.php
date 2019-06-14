@@ -41,43 +41,13 @@
             <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="Upcomingevents.php" style="color: #e6a756"> Upcoming Events</a>
             </li>
-            <?php
-             function displImage(){
-                $flyer_src= "http://localhost:8080/mini_project/flyers/";
-                $images= array();
-                 $query="SELECT Flyer
-                 FROM evdetails
-                 WHERE Category= 'Academia'
-                 ORDER BY Eventdate ASC 
-                 LIMIT 0,5" 
-               or die(mysql_error($con));   
-                    $result = mysqli_query($con, $query);
-                if(mysqli_num_rows($result)>0){
-                    ?>
-                <!--<div class="image">-->
-                  <?php
-                   $count= 0;
-                   while( $row = mysqli_fetch_array($result)) {
-                    $file_path=$row ['Flyer'];
-                    $images[$count] = $flyer_src.$file_path;
-                       echo "<img src=$images[$count]><br><br><br>"; 
-                     }      
-                    ?>  
-            
-           
-                <li> <select class="dropdown">
-              <option >Academia</option>
+            <li> <select class="dropdown">
+                  <option>Academia</option>
                   <option>Religious</option>
                   <option>SRC</option>
                   <option>Social</option>
                   <option>Sports</option>
-                    
-                <?php
-                   }
-                }
-            ?> 
               </select>
-                  
           </li>
           <li><div class="search-container">
                 <form action="Upcomingevents.php">
@@ -90,13 +60,11 @@
       </div>
     </div>
   </nav>
-   <!-- <div class="intro-button mx-auto" style="position:relative;top:40%;left:20%">
-            <a class="btn btn-primary btn-xl" href="Upcomingevents.php" style="font-size:28px">View All Events</a>
-          </div>-->
+   
 <?php
-include 'server.php';
+
 // connect to the database
-// $con = mysqli_connect('localhost', 'root', '','eventdb' );
+$con = mysqli_connect('localhost', 'root', '','eventdb' );
  // Check connection
     if ($con->connect_error) {
         die("Connection failed: " . $con->connect_error);
@@ -107,10 +75,12 @@ include 'server.php';
   <?php    
         $flyer_src= "http://localhost:8080/mini_project/flyers/";
         $images= array();
-         $query="SELECT Flyer
-         FROM evdetails 
-         ORDER BY Eventdate ASC 
-         LIMIT 0,5" 
+         $query=" SELECT Flyer
+         FROM images_tb 
+         JOIN evdetails
+         ON evdetails.images_id = images_tb.image_id 
+         ORDER BY Eventdate ASC
+         LIMIT 0,5 " 
          or die(mysql_error($con));   
             $result = mysqli_query($con, $query);
         if(mysqli_num_rows($result)>0){
@@ -118,7 +88,7 @@ include 'server.php';
         <div class="image">
           <?php
            $count= 0;
-           while( $row = mysqli_fetch_array($result)) {
+           while($row = mysqli_fetch_array($result)) {
             $file_path=$row ['Flyer'];
             $images[$count] = $flyer_src.$file_path;
                echo "<img src=$images[$count]><br><br><br>";
@@ -127,7 +97,7 @@ include 'server.php';
     </div>
     <?php
    }
- }   
+ } else echo "I just can't do this anymore";  
 ?>
         </div>
     

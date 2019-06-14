@@ -11,10 +11,11 @@ $evloc=0;
 $date=0;
 $evname=0;
 $evdetails="evdetails";
+$images_tb="images_tb";
 
 error_reporting(E_ALL |E_STRICT);
-// connecting the database to server but this will be the single instance of the connection to the database
-$con = mysqli_connect($host, $username, $password,$db );
+// connect to the database
+$con = mysqli_connect('localhost', 'root', '','eventdb' );
  // Check connection
     if ($con->connect_error) {
         die("Connection failed: " . $con->connect_error);
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
   $date=isset($_POST['Eventdate'])?$_POST['Eventdate']: '';
   $category=isset($_POST['category'])?$_POST['category']: '';
   $campus=isset($_POST['campus'])?$_POST['campus']: '';
-  $c_info=isset($_POST['c_info'])?$_POST['c_info']: '';
+  //$c_info=isset($_POST['c_info'])?$_POST['c_info']: '';
     
     //creating a directory in the server for flyers
     $target = "flyers/";
@@ -59,18 +60,25 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     //upload events if there are no errors
     if(count($errors)== 0){
         if (isset($_POST['evupload'])) {
-        $query = "INSERT INTO evdetails(Username,Email,Eventname,Eventlocation,Flyer,Eventdate,Category,Campus, c_info)
-        VALUES ('$username','$email','$evname','$evloc','$flyer','$date', '$category','$campus','$c_info')";
+        $query = "INSERT INTO evdetails(Username,Email,Eventname,Eventlocation,Eventdate,Category,Campus)
+        VALUES ('$username','$email','$evname','$evloc','$date', '$category','$campus')";
+        $query2 ="INSERT INTO images_tb(Flyer) VALUES ('$flyer')";
         
         $result2=mysqli_query($con,$query);
+        $result3=mysqli_query($con,$query2);
         if(move_uploaded_file($_FILES['photo']['tmp_name'],$target)) { 
         }else {
             echo "Sorry, there was a problem uploading your file."; 
         }
-        if($result2){
+        if($result2 && $result3){
             $_SESSION['success'] = "You have successfully uploaded your event";
+           ?>
+            <div class="heading">
+        <?php
             echo "You have successfully uploaded your event";
-           // header('location: homepage.html');
+           // header('location: homepage.html'); ?>
+           </div> 
+        <?php
         }else{
             $error = mysqli_error($con);
             echo $error;
